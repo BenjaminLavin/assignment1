@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TODO List</string>
+    <string name="todo_item_title_hint">Enter your todo item</string>
+    <string name="todo_item_title_label">Task</string>
+	<string name="todo_item_details_label">Details</string>
+	<string name="todo_item_completed_label">Completed?</string>
+	<string name="todo_item_current_label">Current</string>
+	<string name="todo_item_archived_label">Archived</string>
+	<string name="todo_item_title">TODO List</string>
+	<string name="add_item">Add Item</string>
+	<string name="show_summary">Show Summary</string>
+	<string name="archived">Archived</string>
+	<string name="delete_item">Delete</string>
+	<string name="delete_confirmation">Are you sure you want to delete?</string>
+    <string name="action_settings">Settings</string>
+
+</resources>
