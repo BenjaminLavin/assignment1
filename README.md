@@ -2,8 +2,7 @@
 
 APK located at bin/TODOList.apk
 
-### App Usage
-================================
+## App Usage
 Press the add button on the menu (circle with plus in it) to add new items
 Upon entering text for the item, press the back or home button to return to list
 
@@ -20,8 +19,7 @@ Email all or currently selected items from the email option in the overflow menu
 See a summary of all items from the summary option in the overflow menu
 
 
-### License
-================================
+## License
 Copyright (C) 2014  Benjamin Lavin
 
 This program is free software; you can redistribute it and/or modify
@@ -34,8 +32,7 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the 
 GNU General Public License for more details.
 
-### References
-================================
+## References
 Android Programming: The Big Nerd Ranch Guide
 	Brian Hardy and Bill Phillips
 The majority of code in this application that was influenced by examples in this book can be found in various tutorials at
