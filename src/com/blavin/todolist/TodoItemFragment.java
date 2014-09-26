@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -78,6 +79,8 @@ public class TodoItemFragment extends Fragment {
 		else{
 			intent = new Intent(getActivity(), TodoListArchiveActivity.class);
 		}
+
+	    Toast.makeText(this.getActivity(), "\"" + mTodoItem.getTitle() + "\" deleted", Toast.LENGTH_SHORT).show();
 		TodoItemList.get(getActivity()).deleteTodoItem(mTodoItem);
 	    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 	    startActivity(intent);

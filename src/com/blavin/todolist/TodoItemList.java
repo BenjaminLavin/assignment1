@@ -42,6 +42,50 @@ public class TodoItemList {
 		return mTodoItems;
 	}
 	
+	public void clearAllSelected(){
+		for(TodoItem t : mTodoItems){
+			t.setSelected(false);
+		}
+	}
+	
+	public void setAllSelected(){
+		for(TodoItem t : mTodoItems){
+			t.setSelected(true);
+		}
+	}
+	
+	public String emailSelected(){
+		if(mTodoItems.isEmpty()) return "";
+		String emailBody = "";
+		
+		for(TodoItem t : mTodoItems){
+			if(t.isSelected()){
+				emailBody += "Task: \"" + t.getTitle() + "\" is " + (t.isCompleted()? "complete" : "incomplete") + "\n";
+				t.setSelected(false);
+			}
+		}
+		
+		return emailBody;
+	}
+	
+	public String emailAll(){
+		if(mTodoItems.isEmpty()) return "";
+		String emailBody = "Current Items:\n";
+		ArrayList<TodoItem> tempItems = new ArrayList<TodoItem>();
+		for(TodoItem t : mTodoItems){
+			if(!t.isArchived())
+				emailBody += "Task: \"" + t.getTitle() + "\" is " + (t.isCompleted()? "complete" : "incomplete") + "\n";
+			else
+				tempItems.add(t);
+		}
+		emailBody +="\nArchived Items:\n";
+		for(TodoItem t : tempItems){
+			emailBody += "Task: \"" + t.getTitle() + "\" is " + (t.isCompleted()? "complete" : "incomplete") + "\n";
+		}
+		
+		return emailBody;
+	}
+	
 	public void removeEmptyItems(){
 		ArrayList<TodoItem> items = new ArrayList<TodoItem>();
 		for(TodoItem t : mTodoItems){

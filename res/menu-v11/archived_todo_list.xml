@@ -3,5 +3,8 @@
     <item android:id="@+id/archived_menu_item_show_summary"
         android:title="@string/show_summary"
         android:showAsAction="never"/>
+    <item android:id="@+id/archived_menu_item_email"
+        android:title="@string/email"
+        android:showAsAction="never"/>
 
 </menu>

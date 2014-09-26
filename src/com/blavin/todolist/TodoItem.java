@@ -8,12 +8,14 @@ public class TodoItem {
 	private String mTitle;
 	private boolean mArchived;
 	private boolean mCompleted;
+	private boolean mSelected;
 	
 	public TodoItem() {
 		// Generate unique identifier
 		mId = UUID.randomUUID();
 		mArchived = false;
 		mCompleted = false;
+		mSelected = false;
 		mTitle = "";
 	}
 
@@ -22,6 +24,14 @@ public class TodoItem {
 		return mTitle;
 	}
 	
+	public boolean isSelected() {
+		return mSelected;
+	}
+
+	public void setSelected(boolean selected) {
+		mSelected = selected;
+	}
+
 	public String getTitle() {
 		return mTitle;
 	}

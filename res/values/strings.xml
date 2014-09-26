@@ -13,7 +13,10 @@
 	<string name="show_summary">Show Summary</string>
 	<string name="archived">Archived</string>
 	<string name="delete_item">Delete</string>
+	<string name="email_all">Email All</string>
+	<string name="email">Email&#8230;</string>
 	<string name="delete_confirmation">Are you sure you want to delete?</string>
+	<string name="more_label">&#8230;</string>
     <string name="action_settings">Settings</string>
 
 </resources>
