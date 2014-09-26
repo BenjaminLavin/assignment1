@@ -1,3 +1,7 @@
+/*
+ * Taken from Android Programming book (see README)
+ */
+
 package com.blavin.todolist;
 
 import java.util.UUID;

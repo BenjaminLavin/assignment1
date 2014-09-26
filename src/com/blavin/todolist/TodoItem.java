@@ -1,3 +1,9 @@
+/*
+ * @author Benjamin Lavin
+ * 
+ * Todo Item class
+ */
+
 package com.blavin.todolist;
 
 import java.util.UUID;
@@ -11,8 +17,7 @@ public class TodoItem {
 	private boolean mSelected;
 	
 	public TodoItem() {
-		// Generate unique identifier
-		mId = UUID.randomUUID();
+		mId = UUID.randomUUID(); // Generate unique identifier
 		mArchived = false;
 		mCompleted = false;
 		mSelected = false;
@@ -40,6 +45,7 @@ public class TodoItem {
 		mTitle = title;
 	}
 
+	// No setter for mId as we don't want this to change
 	public UUID getId() {
 		return mId;
 	}

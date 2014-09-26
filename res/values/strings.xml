@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TODO List</string>
+    <string name="app_name">blavin - TODO List</string>
     <string name="todo_item_title_hint">Enter your todo item</string>
     <string name="todo_item_title_label">Task</string>
 	<string name="todo_item_details_label">Details</string>
 	<string name="todo_item_completed_label">Completed?</string>
 	<string name="todo_item_current_label">Current</string>
 	<string name="todo_item_archived_label">Archived</string>
-	<string name="todo_item_title">TODO List</string>
-	<string name="add_item">Add Item</string>
+	<string name="current_title">Current List</string>
+	<string name="archived_title">Archived List</string>
+	<string name="add_item">Add New Item</string>
+	<string name="task_editor_title">Task Editor</string>
 	<string name="show_summary">Show Summary</string>
-	<string name="archived">Archived</string>
 	<string name="delete_item">Delete</string>
-	<string name="email_all">Email All</string>
-	<string name="email">Email&#8230;</string>
 	<string name="delete_confirmation">Are you sure you want to delete?</string>
+	<string name="email">Email&#8230;</string>
+	<string name="email_option_all">All</string>
+	<string name="email_option_selected">Currrently selected items</string>
 	<string name="more_label">&#8230;</string>
-    <string name="action_settings">Settings</string>
 
 </resources>

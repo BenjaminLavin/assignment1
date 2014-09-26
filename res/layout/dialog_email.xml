@@ -10,16 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground"
-        android:text="All" />
+        android:text="@string/email_option_all" />
 
-    <!-- 
-    http://stackoverflow.com/questions/12825613/imagebutton-doesnt-highlight-on-click-with-transparent-background
-    -->
     <Button
         android:id="@+id/dialog_email_selected"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:selectableItemBackground"
-        android:text="Currrently selected items" />
+        android:text="@string/email_option_selected" />
 
 </LinearLayout>

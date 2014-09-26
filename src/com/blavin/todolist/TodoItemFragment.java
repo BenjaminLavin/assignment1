@@ -1,3 +1,9 @@
+/*
+ * Inspired by example in Android Programming book (see README)
+ *
+ * @author Benjamin Lavin
+ */
+
 package com.blavin.todolist;
 
 import java.util.UUID;
@@ -33,14 +39,21 @@ public class TodoItemFragment extends Fragment {
 	
 	private TodoItem mTodoItem;
 	private EditText mTitleField;
-	private CheckBox mSolvedCheckBox;
+	private CheckBox mCompletedCheckBox;
 	private RadioButton mArchivedRadioButton;
 	private RadioGroup mRadioButtonsGroup;
 	private Button mDeleteButton;
 	
+	/*
+	 * On create, set local var mTodoItem to the one with the UUID passed to this fragment
+	 * 
+	 * Save all Todo Items on creation to preserve any changes made in the previous fragment
+	 * should the user close the app upon reaching this screen
+	 */
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		getActivity().setTitle(R.string.task_editor_title);
 		UUID todoItemId = (UUID)getArguments().getSerializable(EXTRA_TODO_ITEM_ID);
 		mTodoItem = TodoItemList.get(getActivity()).getTodoItem(todoItemId);
 		TodoItemList.get(getActivity()).saveTodoItems();
@@ -49,6 +62,11 @@ public class TodoItemFragment extends Fragment {
 		
 	}
 	
+	/*
+	 * Taken from Android Programming book (see README)
+	 * 
+	 * Alternative way to return to previous screen to the "back" button on the phone
+	 */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 	    switch (item.getItemId()) {
@@ -61,17 +79,25 @@ public class TodoItemFragment extends Fragment {
 	        	return super.onOptionsItemSelected(item);
 	} }
 	
+	/*
+	 * Upon returning from delete dialog, determine whether or not to delete the Todo item
+	 */
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 	    if (resultCode != Activity.RESULT_OK) return;
 	    if (requestCode == REQUEST_DELETE) {
 	        boolean shouldDelete = (boolean)data.getBooleanExtra(DeleteConfirmationFragment.EXTRA_DELETE, false);
 	        if(shouldDelete)
-	        	deleteMe();
+	        	deleteItem();
 	    }
 	}
 	
-	public void deleteMe(){
+	/*
+	 * Delete the Todo item
+	 * Return to either the current todos list or the archived list depending on which list the todo item was in
+	 * Display a confirmation of deletion toast if the item wasn't blank
+	 */
+	public void deleteItem(){
 		Intent intent;
 		if(!mTodoItem.isArchived()){
 			intent = new Intent(getActivity(), TodoListActivity.class);
@@ -80,27 +106,37 @@ public class TodoItemFragment extends Fragment {
 			intent = new Intent(getActivity(), TodoListArchiveActivity.class);
 		}
 
-	    Toast.makeText(this.getActivity(), "\"" + mTodoItem.getTitle() + "\" deleted", Toast.LENGTH_SHORT).show();
+		if(!mTodoItem.getTitle().replaceAll("\\s+","").equals(""))
+			Toast.makeText(this.getActivity(), "\"" + mTodoItem.getTitle() + "\" deleted", Toast.LENGTH_SHORT).show();
 		TodoItemList.get(getActivity()).deleteTodoItem(mTodoItem);
 	    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 	    startActivity(intent);
 	}
 	
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState){
 		View v = inflater.inflate(R.layout.fragment_todo_item, parent, false);
 		
-
+		/*
+		 * Taken from Android Programming book (see README)
+		 * 
+		 * Alternative way to return to previous screen to the "back" button on the phone
+		 */
 	    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 	    	if (NavUtils.getParentActivityName(getActivity()) != null) {
-	        getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
+	    		getActivity().getActionBar().setDisplayHomeAsUpEnabled(true);
 	    	}
 	    }
 		
 		mDeleteButton = (Button)v.findViewById(R.id.delete_button);
-		//http://stackoverflow.com/questions/1521640/standard-android-button-with-a-different-color
+		/*
+		 * Setting the color taken from
+		 * http://stackoverflow.com/questions/1521640/standard-android-button-with-a-different-color
+		 * under attribution creative commons license
+		 */
 		mDeleteButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
-		mDeleteButton.setOnClickListener(new View.OnClickListener() {
+		mDeleteButton.setOnClickListener(new View.OnClickListener() { //Confirm user wants to delete the item
 			
 			@Override
 			public void onClick(View v) {
@@ -112,27 +148,31 @@ public class TodoItemFragment extends Fragment {
 			}
 		});
 		
+		mTitleField = (EditText) v.findViewById(R.id.todo_item_title);
+		mTitleField.setText(mTodoItem.getTitle());
+		mTitleField.addTextChangedListener(new TextWatcher() {
+			// It only matters when the text changes, not before or after
+			public void onTextChanged(CharSequence c, int start, int before, int count){
+				mTodoItem.setTitle(c.toString());
+			}
+			
+			public void beforeTextChanged(CharSequence c, int start, int count, int after){
+				// Do nothing
+			}
+			
+			public void afterTextChanged(Editable c){
+				// Do nothing
+			}
+		});
 		
-//		mDeleteButton.setOnClickListener(new View.OnClickListener() {
-//			
-//			@Override
-//			public void onClick(View v) {
-//				Intent intent;
-//				if(!mTodoItem.isArchived()){
-//					intent = new Intent(getActivity(), TodoListActivity.class);
-//				}
-//				else{
-//					intent = new Intent(getActivity(), TodoListArchiveActivity.class);
-//				}
-//				TodoItemList.get(getActivity()).deleteTodoItem(mTodoItem);
-//			    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//			    startActivity(intent);
-////				if (NavUtils.getParentActivityName(getActivity()) != null) {
-////	                NavUtils.navigateUpFromSameTask(getActivity());
-////	            }
-//			}
-//		});
-
+		// Set and check the completed status of the Todo item
+		mCompletedCheckBox = (CheckBox)v.findViewById(R.id.todo_item_completed);
+		mCompletedCheckBox.setChecked(mTodoItem.isCompleted());
+		mCompletedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
+				mTodoItem.setCompleted(isChecked);
+			}
+		});
 		
 		mRadioButtonsGroup = (RadioGroup)v.findViewById(R.id.radioGroup1);
 		int radioButtonId;
@@ -144,6 +184,7 @@ public class TodoItemFragment extends Fragment {
 		}
 		mRadioButtonsGroup.check(radioButtonId);
 		
+		//Since there are only 2 choices for the radio buttons, if one isn't selected, then the other must be
 		mArchivedRadioButton = (RadioButton)v.findViewById(R.id.todo_item_archived_radio_button);
 		mArchivedRadioButton.setOnCheckedChangeListener(new OnCheckedChangeListener(){
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
@@ -151,34 +192,12 @@ public class TodoItemFragment extends Fragment {
 			}
 		});
 		
-		mTitleField = (EditText) v.findViewById(R.id.todo_item_title);
-		mTitleField.setText(mTodoItem.getTitle());
-		mTitleField.addTextChangedListener(new TextWatcher() {
-			public void onTextChanged(CharSequence c, int start, int before, int count){
-				mTodoItem.setTitle(c.toString());
-			}
-			
-			public void beforeTextChanged(CharSequence c, int start, int count, int after){
-				// This space intentionally left blank
-			}
-			
-			public void afterTextChanged(Editable c){
-				// This one too
-			}
-		});
-		
-		mSolvedCheckBox = (CheckBox)v.findViewById(R.id.todo_item_completed);
-		mSolvedCheckBox.setChecked(mTodoItem.isCompleted());
-		mSolvedCheckBox.setOnCheckedChangeListener(new OnCheckedChangeListener(){
-			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked){
-				// Set the crime's solved property
-				mTodoItem.setCompleted(isChecked);
-			}
-		});
-		
 		return v;
 	}
 	
+	/*
+	 * Taken from Android Programming book (see README)
+	 */
 	public static TodoItemFragment newInstance(UUID todoItemId){
 		Bundle args = new Bundle();
 		args.putSerializable(EXTRA_TODO_ITEM_ID, todoItemId);

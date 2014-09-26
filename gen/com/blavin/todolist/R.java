@@ -1261,21 +1261,22 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0a000b;
-        public static final int action_settings=0x7f0a001d;
-        public static final int add_item=0x7f0a0015;
+        public static final int add_item=0x7f0a0016;
         public static final int app_name=0x7f0a000d;
-        public static final int archived=0x7f0a0017;
-        public static final int delete_confirmation=0x7f0a001b;
-        public static final int delete_item=0x7f0a0018;
-        public static final int email=0x7f0a001a;
-        public static final int email_all=0x7f0a0019;
-        public static final int more_label=0x7f0a001c;
-        public static final int show_summary=0x7f0a0016;
+        public static final int archived_title=0x7f0a0015;
+        public static final int current_title=0x7f0a0014;
+        public static final int delete_confirmation=0x7f0a001a;
+        public static final int delete_item=0x7f0a0019;
+        public static final int email=0x7f0a001b;
+        public static final int email_option_all=0x7f0a001c;
+        public static final int email_option_selected=0x7f0a001d;
+        public static final int more_label=0x7f0a001e;
+        public static final int show_summary=0x7f0a0018;
+        public static final int task_editor_title=0x7f0a0017;
         public static final int todo_item_archived_label=0x7f0a0013;
         public static final int todo_item_completed_label=0x7f0a0011;
         public static final int todo_item_current_label=0x7f0a0012;
         public static final int todo_item_details_label=0x7f0a0010;
-        public static final int todo_item_title=0x7f0a0014;
         public static final int todo_item_title_hint=0x7f0a000e;
         public static final int todo_item_title_label=0x7f0a000f;
     }

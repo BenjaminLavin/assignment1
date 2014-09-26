@@ -5,5 +5,14 @@
         android:icon="@android:drawable/ic_menu_add"
         android:title="@string/add_item"
         android:showAsAction="ifRoom|withText"/>
+    <item android:id="@+id/menu_item_archived"
+        android:title="@string/todo_item_archived_label"
+        android:showAsAction="ifRoom"/>
+    <item android:id="@+id/menu_item_show_summary"
+        android:title="@string/show_summary"
+        android:showAsAction="never"/>
+    <item android:id="@+id/menu_item_email"
+        android:title="@string/email"
+        android:showAsAction="never"/>
 
 </menu>

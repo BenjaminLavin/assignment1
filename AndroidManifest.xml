@@ -17,8 +17,7 @@
             android:name=".TodoListActivity"
             android:label="@string/app_name" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
+            	<action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,13 +25,13 @@
             android:name=".TodoItemActivity"
             android:label="@string/app_name">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
-        android:value=".TodoListActivity"/>
+        			   android:value=".TodoListActivity"/>
         </activity>
         <activity
             android:name=".TodoListArchiveActivity"
             android:label="@string/app_name">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
-        android:value=".TodoListActivity"/>
+        			   android:value=".TodoListActivity"/>
         </activity>
     </application>
 

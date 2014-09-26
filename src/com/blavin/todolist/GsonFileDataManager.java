@@ -1,3 +1,6 @@
+/*
+ * @author Benjamin Lavin
+ */
 package com.blavin.todolist;
 
 import java.io.BufferedReader;
@@ -6,7 +9,6 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import android.content.Context;
 import android.util.Log;
@@ -43,7 +45,7 @@ public class GsonFileDataManager{
 			items = mGson.fromJson(fileContent.toString(), collectionType);
 			
 		} catch (Exception e) {
-			Log.i("TODOList", "Error casting");
+			Log.i("TODOList", "Loading error");
 			e.printStackTrace();
 		} 
 
@@ -56,10 +58,7 @@ public class GsonFileDataManager{
 			FileOutputStream fos = ctx.openFileOutput(ITEMS_FILENAME, Context.MODE_PRIVATE);
 			String json = mGson.toJson(items);
 			fos.write(json.getBytes());
-			fos.close();
-			
-			Log.i("Persistence", "Saved: " + json);
-			
+			fos.close();		
 		} 
 		catch (Exception e) {
 			Log.i("TodoList", "Saving error");

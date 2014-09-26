@@ -1,3 +1,9 @@
+/** Confirm deletion of todo item before actually deleting it
+ * 
+ * @author Benjamin Lavin
+ *
+ */
+
 package com.blavin.todolist;
 
 import android.app.Activity;
@@ -10,7 +16,6 @@ import android.support.v4.app.DialogFragment;
 
 public class DeleteConfirmationFragment extends DialogFragment {
 	public static final String EXTRA_DELETE = "com.blavin.todolist.delete";
-	
 	private boolean mShouldDelete;
 	
     @Override
@@ -35,8 +40,7 @@ public class DeleteConfirmationFragment extends DialogFragment {
     		return;
     	Intent i = new Intent();
     	i.putExtra(EXTRA_DELETE, mShouldDelete);
-    	getTargetFragment()
-        .onActivityResult(getTargetRequestCode(), resultCode, i);
+    	getTargetFragment().onActivityResult(getTargetRequestCode(), resultCode, i);
     }
     
 }
