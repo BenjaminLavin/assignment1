@@ -15,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 
 
+
+
 public class EmailFragment extends DialogFragment {
 	public static final String EXTRA_EMAIL = "com.blavin.todolist.email";
 	public static final int EMAIL_SELECTED = 0;

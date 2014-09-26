@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
+
 public class DeleteConfirmationFragment extends DialogFragment {
 	public static final String EXTRA_DELETE = "com.blavin.todolist.delete";
 	private boolean mShouldDelete;

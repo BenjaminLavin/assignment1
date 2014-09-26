@@ -25,11 +25,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
+
 
 public class TodoItemFragment extends Fragment {
 	public static final String EXTRA_TODO_ITEM_ID = "com.blavin.TODOList.todo_item_id";

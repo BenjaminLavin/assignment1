@@ -19,6 +19,8 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 public abstract class GenericListFragment extends ListFragment {
 	protected static final String DIALOG_EMAIL = "email";
 	protected static final int REQUEST_EMAIL = 0;
