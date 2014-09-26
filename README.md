@@ -1,5 +1,4 @@
 ## Benjamin Lavin - assignment1
-================================
 
 APK located at bin/TODOList.apk
 
